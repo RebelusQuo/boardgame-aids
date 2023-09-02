@@ -1,0 +1,7 @@
+-
+    A:
+      - red
+      -
+        B: green
+
+    C: blue
