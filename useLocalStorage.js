@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import valueType from './valueType';
+
 import isNil from 'lodash/isNil';
 
 export function useLocalStorage(key, defaultValue = null,
@@ -10,12 +12,23 @@ export function useLocalStorage(key, defaultValue = null,
         const storedValue = localStorage.getItem(key);
 
         if (!isNil(storedValue)) {
+            let value;
             try {
-                return deserialize(storedValue);
+                value = deserialize(storedValue);
             }
             catch {
-                return storedValue;
+                value = storedValue;
             }
+
+            if (!isNil(defaultValue)) {
+                const harmonized = harmonize(value, defaultValue);
+                if (value !== harmonized) {
+                    localStorage.setItem(key, serialize(harmonized));
+                    value = harmonized;
+                }
+            }
+
+            return value;
         }
 
         if (!isNil(defaultValue)) {
@@ -37,4 +50,15 @@ export function useLocalStorage(key, defaultValue = null,
     }
 
     return [value, setValue];
+}
+
+function harmonize(value, defaultValue) {
+    // object
+    //   process each key
+    //   special handling if $key exists
+    // array
+    // string
+    // number
+    // bool
+    //   leave other unchanged if type is the same
 }

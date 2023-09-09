@@ -5,11 +5,22 @@ import map from 'lodash/map';
 import find from 'lodash/find';
 import kebabCase from 'lodash/kebabCase'
 
+const testDefaults = {
+    outer: {
+        inner: [1, 2],
+    },
+    text: "lorem",
+    number: 13,
+    truth: true,
+};
+
 const aids = [
     { name: 'Dune Imperium', Component: lazy(() => import('./dune-imperium')) }
 ];
 
 export function App() {
+    const [value, setValue] = useLocalStorage('test', testDefaults);
+
     const [selectedAid, setSelectedAid] = useLocalStorage('selected-aid', '');
     const aid = find(aids, { name: selectedAid });
 
