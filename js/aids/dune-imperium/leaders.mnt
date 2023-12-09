@@ -1,0 +1,143 @@
+-
+  Name: Duke Leto Altreides
+  House: Altreides
+  Source: Imperium
+  Difficulty: 2
+  Ability:
+    > Sending an Agent to a Landsraad board space costs you 1 Solari less.
+  Signet:
+    > 1 Spice → Gain one Influence with a Faction where an opponent has more Influence than you.
+  Rival:
+-
+  Name: Paul Altreides
+  House: Altreides
+  Source: Imperium
+  Difficulty: 1
+  Ability:
+    > You may look at the top card of your deck at any time.
+  Signet:
+    > Draw 1 card.
+-
+  Name: Baron Vladimir Harkonnen
+  House: Harkonnen
+  Source: Imperium
+  Difficulty: 3
+  Ability:
+    > At start of game, secretly choose 2 Factions. When you deploy 4+ troops to the Conflict in a turn, reveal your choices and gain one Influence with each.
+  Signet:
+    > 1 Solari → Draw one Intrigue card.
+  Rival:
+-
+  Name: Glossu "The Beast" Rabban
+  House: Harkonnen
+  Source: Imperium
+  Difficulty: 1
+  Ability:
+    > You start the game with additional resources: 1 Spice, 1 Solari.
+  Signet:
+    > 1 Troop -or- 2 Troops if you have at least one Faction Alliance.
+  Rival:
+-
+  Name: Count Ilban Richese
+  House: Richese
+  Source: Imperium
+  Difficulty: 1
+  Ability:
+    > Whenever you pay Solari for the cost of a board space: draw one card.
+  Signet:
+    > Gain 1 Solari.
+  Rival:
+-
+  Name: Helena Richese
+  House: Richese
+  Source: Imperium
+  Difficulty: 2
+  Ability:
+    > Enemy Agents don't block your Agents at Landsraad or City board spaces.
+  Signet:
+    > Remove and replace a card in the Imperium Row. During your Reveal turn this round, you may acquire the removed card for 1 Persuasion less.
+-
+  Name: Countess Ariana Thorvald
+  House: Thorvald
+  Source: Imperium
+  Difficulty: 3
+  Ability:
+    > Whenever you harvest spice, gain 1 Spice less and draw a card.
+  Signet:
+    > Gain 1 Water.
+  Rival:
+-
+  Name: Earl Memnon Thorvald
+  House: Thorvald
+  Source: Imperium
+  Difficulty: 1
+  Ability:
+    > When you take a High Council seat: gain any one Influence.
+  Signet:
+    > Gain 1 Spice.
+  Rival:
+-
+  Name: Archduke Armand Ecaz
+  House: Ecaz
+  Source: Ix
+  Difficulty: 2
+  Ability:
+    > Reveal Turn: If you have at least two Agents on Landsraad / City / Trade board spaces, you may trash one of your cards in play.
+  Signet:
+    > You may acquire a card that costs 3 Persuasion or less.
+-
+  Name: Ilesa Ecaz
+  House: Ecaz
+  Source: Ix
+  Difficulty: 3
+  Ability:
+    > Round Start: Set aside a card from your hand.
+    > At the start of your second turn in a round, reveal that card and return it to your hand. If you use it to send an Agent this turn:
+    > - if it has exactly one Agent icon, gain 1 Spice.
+    > - otherwise, gain 1 Solari.
+  Signet:
+    > 1 Solari → Acquire a Foldspace card.
+-
+  Name: "Princess" Yuna Moritani
+  House: Moritani
+  Source: Ix
+  Difficulty: 2
+  Ability:
+    > You start the game with no Water.
+    > Whenever you gain Solari on your turn, increase the amount gained by 1.
+  Signet:
+    > 7 Solari → Gain any one Influence, 1 Troop, 1 Spice.
+-
+  Name: Viscount Hundro Moritani
+  House: Moritani
+  Source: Ix
+  Difficulty: 1
+  Ability:
+    > At the start of the game, look at the top two cards of the Intrigue deck. Keep one and put the other back on top.
+  Signet:
+    > 1 Spice → 1 Freighter
+  Rival:
+-
+  Name: Prince Rhombur Vernius
+  House: Vernius
+  Source: Ix
+  Difficulty: 1
+  Ability:
+    > Your dreadnoughts have 4 strength (instead of 3).
+  Signet:
+    > Acquire one Tech -or- one Negotiator.
+  Rival:
+-
+  Name: Tessia Vernius
+  House: Vernius
+  Source: Ix
+  Difficulty: 4
+  Ability:
+    > Game Start: Put a Snooper token at 2 Influence on each Influence track.
+    > Whenever you reach a Snooper token, move it to [the next unused option below] and take that reward.
+    > 1. Discard a card → Gain 1 Spice.
+    > 2. Gain the bonus from this token's Influence track.
+    > 3. Gain one Influence on this token's Influence track.
+    > 4. Gain the bonus from this token's Influence track and one Influence on that track.
+  Signet:
+    > Lose any one Influence → Gain one Influence with a Faction where you have a Snooper token.
