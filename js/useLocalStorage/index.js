@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { migrate } from './migrate';
+
 import isNil from 'lodash/isNil';
 
 export function useLocalStorage(key, defaultValue = null,
@@ -10,12 +12,23 @@ export function useLocalStorage(key, defaultValue = null,
         const storedValue = localStorage.getItem(key);
 
         if (!isNil(storedValue)) {
+            let value;
             try {
-                return deserialize(storedValue);
+                value = deserialize(storedValue);
             }
             catch {
-                return storedValue;
+                value = storedValue;
             }
+
+            if (!isNil(defaultValue)) {
+                const migrated = migrate(value, defaultValue);
+                if (value !== migrated) {
+                    localStorage.setItem(key, serialize(migrated));
+                    value = migrated;
+                }
+            }
+
+            return value;
         }
 
         if (!isNil(defaultValue)) {
