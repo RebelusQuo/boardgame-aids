@@ -5,7 +5,7 @@
   "source": "index.html",
   "scripts": {
     "start": "parcel",
-    "build": "npm run grammar && parcel build",
+    "build": "npm run grammar && parcel build --no-optimize --public-url ./",
     "test": "npm run grammar && mocha \"./**/*_spec.js\"",
     "grammar": "peggy --format es -o js/mnt/parser.js js/mnt/parser.pegjs"
   },

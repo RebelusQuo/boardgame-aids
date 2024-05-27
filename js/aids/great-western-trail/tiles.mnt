@@ -1,0 +1,116 @@
+-
+  -
+    Count: 2
+    Type: Flood
+    Kind: 4
+    Hand: Green
+  -
+    Count: 1
+    Type: Flood
+    Kind: 3
+    Hand: Black
+  -
+    Count: 1
+    Type: Flood
+    Kind: 3
+    Hand: Green
+  -
+    Count: 1
+    Type: Flood
+    Kind: 2
+    Hand: Black
+  -
+    Count: 1
+    Type: Flood
+    Kind: 2
+    Hand: Green
+  -
+    Count: 2
+    Type: Drought
+    Kind: 4
+    Hand: Green
+  -
+    Count: 1
+    Type: Drought
+    Kind: 3
+    Hand: Black
+  -
+    Count: 1
+    Type: Drought
+    Kind: 3
+    Hand: Green
+  -
+    Count: 1
+    Type: Drought
+    Kind: 2
+    Hand: Black
+  -
+    Count: 1
+    Type: Drought
+    Kind: 2
+    Hand: Green
+  -
+    Count: 2
+    Type: Rockslide
+    Kind: 4
+    Hand: Green
+  -
+    Count: 1
+    Type: Rockslide
+    Kind: 3
+    Hand: Black
+  -
+    Count: 1
+    Type: Rockslide
+    Kind: 3
+    Hand: Green
+  -
+    Count: 1
+    Type: Rockslide
+    Kind: 2
+    Hand: Black
+  -
+    Count: 1
+    Type: Rockslide
+    Kind: 2
+    Hand: Green
+  -
+    Count: 9
+    Type: Bandit
+    Kind: Green
+    Hand: Green
+  -
+    Count: 8
+    Type: Bandit
+    Kind: Orange
+    Hand: Black
+-
+  -
+    Count: 11
+    Type: Cowboy
+  -
+    Count: 11
+    Type: Builder
+  -
+    Count: 11
+    Type: Engineer
+-
+  -
+    Count: 7
+    Type: Cowboy
+  -
+    Count: 7
+    Type: Builder
+  -
+    Count: 7
+    Type: Engineer
+  -
+    Count: 2
+    Type: Bandit
+    Kind: Green
+    Hand: Green
+  -
+    Count: 3
+    Type: Bandit
+    Kind: Orange
+    Hand: Black

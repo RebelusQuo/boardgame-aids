@@ -6,7 +6,8 @@ import find from 'lodash/find';
 import kebabCase from 'lodash/kebabCase'
 
 const aids = [
-    { name: 'Dune Imperium', Component: lazy(() => import('./aids/dune-imperium')) }
+    { name: 'Dune Imperium', Component: lazy(() => import('./aids/dune-imperium')) },
+    { name: 'Great Western Trail', Component: lazy(() => import('./aids/great-western-trail')) },
 ];
 
 export function App() {
