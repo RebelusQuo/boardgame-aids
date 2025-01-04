@@ -52,10 +52,11 @@ const $93ded6b8843cf829$export$ecca9d8de1f295ef = (0, $eBrO1.default).parse("-\r
 function $93ded6b8843cf829$export$2e2bcd8739ae039() {
     const [state, setState] = (0, $eaw0J.useLocalStorage)("great-western-trail--state");
     const [settings, setSettings] = (0, $eaw0J.useLocalStorage)("great-western-trail--settings", {
+        bot: false,
         players: 4,
         rttn: false
     });
-    const { players: players, rttn: rttn } = settings;
+    const { bot: bot, players: players, rttn: rttn } = settings;
     const bags = (0, $d4J5n.useRef)();
     const deliveredRef = (0, $d4J5n.useRef)();
     (0, $d4J5n.useEffect)(()=>{
@@ -72,9 +73,11 @@ function $93ded6b8843cf829$export$2e2bcd8739ae039() {
         state?.foresight
     ]);
     function onChangePlayers(value) {
+        const match = /(\*)?(\d+)/.exec(value) || [];
         setSettings({
             ...settings,
-            players: ~~value
+            bot: match[1] === "*",
+            players: ~~match[2]
         });
     }
     function onChangeRttn(checked) {
@@ -84,7 +87,7 @@ function $93ded6b8843cf829$export$2e2bcd8739ae039() {
         });
     }
     function onSetup() {
-        const [state, _bags] = (0, $8uppp.setup)((0, (/*@__PURE__*/$parcel$interopDefault($3hRtl)))($93ded6b8843cf829$export$ecca9d8de1f295ef), players, rttn);
+        const [state, _bags] = (0, $8uppp.setup)((0, (/*@__PURE__*/$parcel$interopDefault($3hRtl)))($93ded6b8843cf829$export$ecca9d8de1f295ef), bot, players, rttn);
         bags.current = _bags;
         setState({
             ...state,
@@ -112,20 +115,28 @@ function $93ded6b8843cf829$export$2e2bcd8739ae039() {
                         children: "Setup"
                     }),
                     /*#__PURE__*/ (0, $228IU.jsxs)("select", {
-                        value: players,
-                        onChange: (e)=>onChangePlayers(~~e.target.value),
+                        value: (bot ? "*" : "") + players,
+                        onChange: (e)=>onChangePlayers(e.target.value),
                         children: [
                             /*#__PURE__*/ (0, $228IU.jsx)("option", {
-                                value: 2,
-                                children: "2 Players"
+                                value: "4",
+                                children: "4 Players"
                             }),
                             /*#__PURE__*/ (0, $228IU.jsx)("option", {
-                                value: 3,
+                                value: "3",
                                 children: "3 Players"
                             }),
                             /*#__PURE__*/ (0, $228IU.jsx)("option", {
-                                value: 4,
-                                children: "4 Players"
+                                value: "2",
+                                children: "2 Players"
+                            }),
+                            /*#__PURE__*/ (0, $228IU.jsx)("option", {
+                                value: "*3",
+                                children: "2 Players w/ bot"
+                            }),
+                            /*#__PURE__*/ (0, $228IU.jsx)("option", {
+                                value: "*2",
+                                children: "1 Player w/ bot"
                             })
                         ]
                     }),
@@ -240,6 +251,14 @@ function $93ded6b8843cf829$export$2e2bcd8739ae039() {
                                 ]
                             })
                         ]
+                    }),
+                    state.bot && /*#__PURE__*/ (0, $228IU.jsx)((0, $caGMv.InitialMarket), {
+                        $count: 1,
+                        children: (0, (/*@__PURE__*/$parcel$interopDefault($hMrfG)))(state.bot_focus, ({ Type: Type })=>/*#__PURE__*/ (0, $228IU.jsx)((0, $caGMv.Tile), {
+                                children: /*#__PURE__*/ (0, $228IU.jsx)((0, $aajMz.BagTile), {
+                                    type: Type
+                                })
+                            }))
                     }),
                     /*#__PURE__*/ (0, $228IU.jsx)((0, $caGMv.InitialMarket), {
                         $count: state.players,
@@ -3036,9 +3055,9 @@ $parcel$export(module.exports, "setup", () => $2ea56442cbaa128a$export$de27182ff
 $parcel$export(module.exports, "delivered", () => $2ea56442cbaa128a$export$3e1536f849888b99);
 $parcel$export(module.exports, "restoreBags", () => $2ea56442cbaa128a$export$dd5a871039253ba4);
 parcelRequire("j4fTH");
-var $IIOw7 = parcelRequire("IIOw7");
-var $hWsJ2 = parcelRequire("hWsJ2");
 var $QjoqM = parcelRequire("QjoqM");
+var $hWsJ2 = parcelRequire("hWsJ2");
+var $IIOw7 = parcelRequire("IIOw7");
 
 var $hMrfG = parcelRequire("hMrfG");
 
@@ -3053,9 +3072,10 @@ var $7f334 = parcelRequire("7f334");
 var $17bKC = parcelRequire("17bKC");
 
 var $bjBxN = parcelRequire("bjBxN");
-function $2ea56442cbaa128a$export$de27182ff8187d6c([bag1, bag2, bag3], players, rttn) {
+function $2ea56442cbaa128a$export$de27182ff8187d6c([bag1, bag2, bag3], bot, players, rttn) {
     let dist, pick;
     const state = {
+        bot: bot,
         players: players,
         rttn: rttn
     };
@@ -3069,7 +3089,7 @@ function $2ea56442cbaa128a$export$de27182ff8187d6c([bag1, bag2, bag3], players, 
         dist: dist,
         pick: pick
     };
-    [state.market, dist, pick] = $2ea56442cbaa128a$var$setupBag2(bag2, players);
+    [state.bot_focus, state.market, dist, pick] = $2ea56442cbaa128a$var$setupBag2(bag2, bot, players);
     bag2 = {
         bag: bag2,
         dist: dist,
@@ -3159,13 +3179,15 @@ function $2ea56442cbaa128a$var$setupBag1(bag1) {
         bagPick
     ];
 }
-function $2ea56442cbaa128a$var$setupBag2(bag2, players) {
+function $2ea56442cbaa128a$var$setupBag2(bag2, bot, players) {
     const [sum, bagDist] = $2ea56442cbaa128a$var$createBagDist(bag2);
     const bagPick = (0, $QjoqM.randomPicks).create(sum);
+    const bot_focus = bot ? (0, (/*@__PURE__*/$parcel$interopDefault($hMrfG)))((0, (/*@__PURE__*/$parcel$interopDefault($hMrfG)))(bagPick(1), ([, k])=>k), (k)=>$2ea56442cbaa128a$var$pickItem(bagDist(k))) : [];
     const count = players * 2 - 1;
     const picks = (0, (/*@__PURE__*/$parcel$interopDefault($hMrfG)))(bagPick(count), ([, k])=>k);
     const market = (0, (/*@__PURE__*/$parcel$interopDefault($hMrfG)))(picks, (k)=>$2ea56442cbaa128a$var$pickItem(bagDist(k)));
     return [
+        bot_focus,
         market,
         bagDist,
         bagPick
@@ -3860,4 +3882,4 @@ module.exports = $264c701ae2c9eeab$var$cloneDeep;
 
 
 
-//# sourceMappingURL=great-western-trail.eef52ab1.js.map
+//# sourceMappingURL=great-western-trail.1d0159ba.js.map

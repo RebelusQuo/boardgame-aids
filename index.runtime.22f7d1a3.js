@@ -62,7 +62,7 @@ $7d39d93f9098a310$export$f7ad0328861e2f03 = $7d39d93f9098a310$var$resolve;
 
 var $59e043d89af4df05$exports = {};
 
-(parcelRequire("aKzDW")).register(new URL("", import.meta.url).toString(), JSON.parse('["7qi2V","index.2afc8afe.js","l0gUx","dune-imperium.7d6d4bf9.js","73MVd","dune-imperium.c5be8491.js","yjGxj","great-western-trail.eef52ab1.js"]'));
+(parcelRequire("aKzDW")).register(new URL("", import.meta.url).toString(), JSON.parse('["7qi2V","index.2afc8afe.js","l0gUx","dune-imperium.7d6d4bf9.js","73MVd","dune-imperium.c5be8491.js","yjGxj","great-western-trail.1d0159ba.js"]'));
 
 
-//# sourceMappingURL=index.runtime.669fa863.js.map
+//# sourceMappingURL=index.runtime.22f7d1a3.js.map
