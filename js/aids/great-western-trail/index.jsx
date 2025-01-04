@@ -28,8 +28,8 @@ forEach(tiles, bag => forEach(bag, tile => tile.Count = ~~tile.Count));
 
 export default function GreatWesternTrail() {
     const [state, setState] = useLocalStorage('great-western-trail--state');
-    const [settings, setSettings] = useLocalStorage('great-western-trail--settings', { players: 4, rttn: false });
-    const { players, rttn } = settings;
+    const [settings, setSettings] = useLocalStorage('great-western-trail--settings', { bot: false, players: 4, rttn: false });
+    const { bot, players, rttn } = settings;
     const bags = useRef();
     const deliveredRef = useRef();
 
@@ -44,7 +44,8 @@ export default function GreatWesternTrail() {
     }, [state?.stage, state?.foresight]);
 
     function onChangePlayers(value) {
-        setSettings({ ...settings, players: ~~value });
+        const match = /(\*)?(\d+)/.exec(value) || [];
+        setSettings({ ...settings, bot: match[1] === '*', players: ~~match[2] });
     }
 
     function onChangeRttn(checked) {
@@ -52,7 +53,7 @@ export default function GreatWesternTrail() {
     }
 
     function onSetup() {
-        const [state, _bags] = setup(cloneDeep(tiles), players, rttn);
+        const [state, _bags] = setup(cloneDeep(tiles), bot, players, rttn);
         bags.current = _bags;
         setState({ ...state, stage: 'setup' });
     }
@@ -69,10 +70,12 @@ export default function GreatWesternTrail() {
                 ? <Button onClick={onSetup}>Setup</Button>
                 : <ConfirmButton kind={Reset} onConfirm={onSetup}>Setup</ConfirmButton>
             }
-            <select value={players} onChange={e => onChangePlayers(~~e.target.value)}>
-                <option value={2}>2 Players</option>
-                <option value={3}>3 Players</option>
-                <option value={4}>4 Players</option>
+            <select value={(bot ? '*' : '') + players} onChange={e => onChangePlayers(e.target.value)}>
+                <option value={'4'}>4 Players</option>
+                <option value={'3'}>3 Players</option>
+                <option value={'2'}>2 Players</option>
+                <option value={'*3'}>2 Players w/ bot</option>
+                <option value={'*2'}>1 Player w/ bot</option>
             </select>
             <label>
                 <input type="checkbox" checked={rttn} onChange={e => onChangeRttn(e.target.checked)} />
@@ -135,6 +138,12 @@ export default function GreatWesternTrail() {
                         )}
                     </TrailBandits>
                 </Trail>
+
+                {state.bot && <InitialMarket $count={1}>
+                    {map(state.bot_focus, ({ Type }) =>
+                        <Tile><BagTile type={Type} /></Tile>
+                    )}
+                </InitialMarket>}
 
                 <InitialMarket $count={state.players}>
                     {map(state.market, ({ Type }, i) =>

@@ -8,9 +8,9 @@ import times from 'lodash/times';
 import zip from 'lodash/zip';
 import omit from 'lodash/omit';
 
-export function setup([bag1, bag2, bag3], players, rttn) {
+export function setup([bag1, bag2, bag3], bot, players, rttn) {
     let dist, pick;
-    const state = { players, rttn };
+    const state = { bot, players, rttn };
 
     state.neutral = neutralBuildings();
     state.private = privateBuildings(rttn);
@@ -21,7 +21,7 @@ export function setup([bag1, bag2, bag3], players, rttn) {
     [state.trail, dist, pick] = setupBag1(bag1);
     bag1 = { bag: bag1, dist, pick };
 
-    [state.market, dist, pick] = setupBag2(bag2, players);
+    [state.bot_focus, state.market, dist, pick] = setupBag2(bag2, bot, players);
     bag2 = { bag: bag2, dist, pick };
 
     [dist, pick] = setupBag3(bag3);
@@ -85,15 +85,19 @@ function setupBag1(bag1) {
     return [trail, bagDist, bagPick];
 }
 
-function setupBag2(bag2, players) {
+function setupBag2(bag2, bot, players) {
     const [sum, bagDist] = createBagDist(bag2);
     const bagPick = randomPicks.create(sum);
+
+    const bot_focus = bot
+        ? map(map(bagPick(1), ([,k]) => k), k => pickItem(bagDist(k)))
+        : [];
 
     const count = players * 2 - 1;
     const picks = map(bagPick(count), ([,k]) => k);
     const market = map(picks, k => pickItem(bagDist(k)));
 
-    return [market, bagDist, bagPick];
+    return [bot_focus, market, bagDist, bagPick];
 }
 
  function setupBag3(bag3) {
